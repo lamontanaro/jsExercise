@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setCurrentPerson } from '../action/Actions';
 
 class WallTableItem extends Component {
 
@@ -22,12 +23,8 @@ class WallTableItem extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setCurrentPerson(current_person){
-      dispatch({type: "SET_CURRENT_PERSON", current_person})
-    }
-  }
+const mapDispatchToProps = {
+  setCurrentPerson
 }
 
 export default connect(null, mapDispatchToProps)(WallTableItem);

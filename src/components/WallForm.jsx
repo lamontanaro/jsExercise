@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import WallMessage from './WallMessage';
+import { addPerson, setCurrentPerson } from '../action/Actions';
 
 class WallForm extends Component {
 
@@ -99,15 +100,8 @@ class WallForm extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    addPerson(person){
-      dispatch({type: "ADD_PERSON", person})
-    },
-    setCurrentPerson(current_person){
-      dispatch({type: "SET_CURRENT_PERSON", current_person})
-    }
-  }
+const mapDispatchToProps = {
+  addPerson, setCurrentPerson
 };
 
 

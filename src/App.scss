@@ -1,11 +1,14 @@
+$cornflowerblue: #5190f5;
+$mintgreen: #8ffba1;
+$mercury: #e6e4e4;
+
 .App {
   text-align: center;
-  background: #e6e4e4;
-}
-
-.App-title {
-  font-size: 1.5em;
-  color: #5190f5;
+  background: $mercury;
+  &-title {
+    font-size: 1.5em;
+    color: $cornflowerblue;
+  }
 }
 
 .Wall {
@@ -16,49 +19,48 @@
 
 .WallForm {
   width: 300px;
-}
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+  }
+  
+  &-label {
+    color: $cornflowerblue;
+  }
 
-.WallForm-item {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 10px;
-}
+  &-select {
+    width: 170px;
+    border: 1px solid $cornflowerblue;
+  }
 
-.WallForm-label {
-  color: #5190f5;
-}
+  &-button {
+    border: 1px solid $cornflowerblue;
+    width: 80px;
+    height: 30px;
+    color: $cornflowerblue;
+    margin-bottom: 10px;
+  }
 
-.WallForm-select {
-  width: 170px;
-  border: 1px solid #5190f5;
-}
-
-.WallForm-button {
-  border: 1px solid #5190f5;
-  width: 80px;
-  height: 30px;
-  color: #5190f5;
-  margin-bottom: 10px;
-}
-
-.WallForm-input {
-  border: 1px solid #5190f5;
-  background: white;
+  &-input {
+    border: 1px solid $cornflowerblue;
+    background: white;
+  }
 }
 
 .WallTable {
-  border: 1px solid #5190f5;
+  border: 1px solid $cornflowerblue;
   width: 400px;
   display: flex;
   justify-content: center;
+
+  &-label {
+    color: $cornflowerblue;
+  }
 }
 
 .WallMessage {
   width: 100%;
-  background: #8ffba1;
+  background: $mintgreen;
   margin-bottom: 20px;
-}
-
-.WallTable-label {
-  color: #5190f5;
 }

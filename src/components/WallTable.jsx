@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import WallTableItem from './WallTableItem';
 import { connect } from 'react-redux';
 
-
-
 class WallTable extends Component {
   loadPersons(persons){
     return (
