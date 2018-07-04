@@ -1,18 +1,64 @@
 .App {
   text-align: center;
-  background: #F8F8F8;
-}
-
-.App-header {
-  padding: 20px;
-  color: black;
+  background: #e6e4e4;
 }
 
 .App-title {
   font-size: 1.5em;
+  color: #5190f5;
+}
+
+.Wall {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.WallForm {
+  width: 300px;
+}
+
+.WallForm-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.WallForm-label {
+  color: #5190f5;
+}
+
+.WallForm-select {
+  width: 170px;
+  border: 1px solid #5190f5;
+}
+
+.WallForm-button {
+  border: 1px solid #5190f5;
+  width: 80px;
+  height: 30px;
+  color: #5190f5;
+  margin-bottom: 10px;
+}
+
+.WallForm-input {
+  border: 1px solid #5190f5;
+  background: white;
 }
 
 .WallTable {
-  border: 1px solid blue;
+  border: 1px solid #5190f5;
+  width: 400px;
+  display: flex;
+  justify-content: center;
 }
 
+.WallMessage {
+  width: 100%;
+  background: #8ffba1;
+  margin-bottom: 20px;
+}
+
+.WallTable-label {
+  color: #5190f5;
+}

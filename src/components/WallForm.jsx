@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-
+import WallMessage from './WallMessage';
 
 class WallForm extends Component {
 
@@ -13,38 +12,22 @@ class WallForm extends Component {
       country: '',
       birthday: ''
     }
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-   }
-
-   componentDidMount(){
-    axios.get('https://restcountries.eu/rest/v2/all')
-    .then(function (response) {
-      let countries = response.data.map(country => country.name)
-      console.log(countries)
-      debugger
-      this.props.setCountries(countries)
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
    }
 
   loadCountries() {
-    this.props.countries.map( country => 
-      <option value={country.name}>{country.name}</option>
+    return this.props.countries.map( country => 
+      <option key={country} value={country}>{country}</option>
     )
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   }
 
-  handleSubmit(event){
+  handleSubmit = (event) =>{
     event.preventDefault();
     const person = {
       name: this.state.name,
@@ -53,6 +36,7 @@ class WallForm extends Component {
       birthday: this.state.birthday
     }
     this.props.addPerson(person);
+    this.props.setCurrentPerson(person);
     this.setState({name: '', surname: '', country:'', birthday: ''});
   }
 
@@ -62,49 +46,54 @@ class WallForm extends Component {
     return (
       <div className="WallForm">
         <form onSubmit={this.handleSubmit}>
-
-          <label>Name:</label>
+          <div className="WallForm-item">
+            <label className="WallForm-label">Name:</label>
+            <input
+              className="WallForm-input"
+              placeholder="Name"
+              name="name"
+              value={name}
+              onChange={this.handleChange}
+              />            
+          </div>
+          <div className="WallForm-item">
+            <label className="WallForm-label">Surname:</label>
+            <input
+              className="WallForm-input"
+              placeholder="Surname"
+              name="surname"
+              value={surname}
+              onChange={this.handleChange}
+              />            
+          </div>
+          <div className="WallForm-item">
+            <label className="WallForm-label">Birthday:</label>
+            <input
+              className="WallForm-input"
+              placeholder="mm/dd/yyyy"
+              name="birthday"
+              value={birthday}
+              onChange={this.handleChange}
+              />            
+          </div>
+          <div className="WallForm-item">
+            <label className="WallForm-label">Countries:</label>
+            <select 
+              name="country"
+              onChange={this.handleChange}
+              className="WallForm-select"
+              >
+              {this.loadCountries()}
+            </select>            
+          </div>
           <input
-            placeholder="Name"
-            name="name"
-            value={name}
-            onChange={this.handleChange}
-            />
-          <br />
-
-          <label>Surname:</label>
-          <input
-            placeholder="Surname"
-            name="surname"
-            value={surname}
-            onChange={this.handleChange}
-            />
-          <br />
-
-          <label>Birthday:</label>
-          <input
-            placeholder="Birthday"
-            name="birthday"
-            value={birthday}
-            onChange={this.handleChange}
-            />
-          <br />
-
-          <label>Countries:</label>
-          <select 
-            name="country"
-            onChange={this.handleChange}
-            >
-            {this.loadCountries()}
-          </select>
-          
-          <br />
-          <input
+            className="WallForm-button"
             type="submit"
             value="Save"
           />
 
         </form>
+        <WallMessage />
       </div>
     )
   }
@@ -112,15 +101,15 @@ class WallForm extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addPerson(person) {
+    addPerson(person){
       dispatch({type: "ADD_PERSON", person})
     },
-
-    setCountries(countries) {
-      dispatch({type: "SET_COUNTRIES", countries})
+    setCurrentPerson(current_person){
+      dispatch({type: "SET_CURRENT_PERSON", current_person})
     }
   }
 };
+
 
 const mapStateToProps = (state) => ({
   countries: state.countries

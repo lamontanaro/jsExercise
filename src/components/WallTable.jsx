@@ -15,7 +15,7 @@ class WallTable extends Component {
     return (
       <div className="WallTable">
         <table >
-          <tr>
+          <tr className="WallTable-label">
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Country</th>
